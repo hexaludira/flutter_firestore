@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
               products = snapshot.data.documents.map((doc) => Product.fromMap(doc.data, doc.documentID)).toList();
               return ListView.builder(
                 itemCount: products.length,
-                itemBuilder: (BuildContext, index) => ProductCard(productDetails: products[index]),
+                itemBuilder: (buildContext, index) => ProductCard(productDetails: products[index]),
               );
             } else {
               return Text('fetching');
