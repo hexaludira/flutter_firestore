@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firestore/core/models/productModel.dart';
 import 'package:provider/provider.dart';
 import '../../core/viewmodels/CRUDModel.dart';
-import '../../core/viewmodels/CRUDModel.dart';
 
 class AddProduct extends StatefulWidget {
   @override
@@ -47,8 +46,44 @@ class _AddProductState extends State<AddProduct> {
               SizedBox(height: 16,),
               TextFormField(
                 keyboardType: TextInputType.numberWithOptions(),
-                
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Price',
+                  fillColor: Colors.grey[300],
+                  filled: true,
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter the price';
+                  }
+                },
+                onSaved: (value) => price = value,
+              ),
+              DropdownButton<String>(
+                value: productType,
+                onChanged: (String newValue) {
+                  setState(() {
+                    productType = newValue;
+                  });
+                },
+                items: <String>['Bag','Computer','Dress','Phone','Shoes'].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(value: value, child: Text(value),
+                  );
+                }).toList(),
+              ),
+              RaisedButton(
+                splashColor: Colors.red,
+                onPressed: () async{
+                  if (_formKey.currentState.validate()) {
+                    _formKey.currentState.save();
+                    await productProvider.addProduct(Product(name: title, price: price, img: productType.toLowerCase()));
+                    Navigator.pop(context);
+                  }
+                },
+                child: Text('Add Product', style: TextStyle(color: Colors.white)),
+                color: Colors.blue,
               )
+
             ],
           ),
         ),
