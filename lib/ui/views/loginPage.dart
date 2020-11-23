@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueAccent,
       body: SafeArea(
         child: CustomScrollView(
           slivers: <Widget>[
@@ -109,21 +113,84 @@ class LoginPage extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: 
+                            borderRadius: BorderRadius.circular(8), 
                           ),
+                          color: Color(0xFF4f4f4f),
+                          elevation: 0,
+                          padding: EdgeInsets.symmetric(vertical: 16),
                         ),
-                      )
+                      ),
                     ],
                   ),
-                )
+                ),
 
+                SizedBox(height: 20),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Text(
+                      'OR',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: Divider(
+                        thickness: 1,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Login with Facebook',
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    color: Colors.white,
+                    elevation: 0,
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                  ),
+                ),
+                SizedBox(height: 30),
               ]), 
             ),
+            
             SliverFillRemaining(
               hasScrollBody: false,
               child: Container (
-                color: Colors.red,
-                child: Text('Sliver Fill Remaining'),
+                alignment: Alignment.bottomCenter,
+                margin: EdgeInsets.only(bottom: 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(
+                      'Don\'t have account ?',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
+                      },
+                      child: Text(
+                        'Register here',
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ],
