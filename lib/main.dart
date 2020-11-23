@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firestore/ui/views/loginPage.dart';
 import 'package:provider/provider.dart';
 import './ui/router.dart';
 import 'locator.dart';
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        title: 'Product App',
-        theme: ThemeData(),
-        onGenerateRoute: Router.generateRoute,
+        home: LoginPage(),
+        // initialRoute: '/',
+        // title: 'Product App',
+        // theme: ThemeData(),
+        // onGenerateRoute: Router.generateRoute,
       ),
     );
   }
