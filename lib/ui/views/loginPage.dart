@@ -7,8 +7,10 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Colors.blueAccent,
       body: SafeArea(
+        minimum: const EdgeInsets.only(left: 15, right: 15),
         child: CustomScrollView(
           slivers: <Widget>[
             SliverList(
@@ -52,6 +54,7 @@ class LoginPage extends StatelessWidget {
                 //Form username & password
                 Form(
                   child: Column(
+                  
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
@@ -60,6 +63,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       TextFormField(
+                        
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -67,11 +71,17 @@ class LoginPage extends StatelessWidget {
                           fillColor: Colors.white,
                           filled: true,
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(60),
                             borderSide: BorderSide(
                                 color: Colors.white,
                               ),
                             ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(60),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            )
+                          ),
                             contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
                           ),
                       ),
@@ -149,6 +159,22 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Login with Google',
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    color: Colors.white,
+                    elevation: 0,
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                  ),
+                ),
+                SizedBox(height: 8),
                 Container(
                   width: double.infinity,
                   child: RaisedButton(

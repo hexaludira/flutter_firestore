@@ -13,18 +13,26 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(builder: (_) => locator<CRUDModel>()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: LoginPage(),
-        // initialRoute: '/',
-        // title: 'Product App',
-        // theme: ThemeData(),
-        // onGenerateRoute: Router.generateRoute,
+    return MaterialApp(
+      title: 'Login Test',
+      theme: ThemeData(
+        primarySwatch: Colors.blue
       ),
+      debugShowCheckedModeBanner: false,
+      home: LoginPage(),
     );
+    // return MultiProvider(
+    //   providers: [
+    //     ChangeNotifierProvider(builder: (_) => locator<CRUDModel>()),
+    //   ],
+    //   child: MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     // home: LoginPage(),
+    //     initialRoute: '/',
+    //     title: 'Product App',
+    //     theme: ThemeData(),
+    //     onGenerateRoute: Router.generateRoute,
+    //   ),
+    // );
   }
 }
