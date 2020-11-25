@@ -10,7 +10,7 @@ class LoginPage extends StatelessWidget {
       
       backgroundColor: Colors.blueAccent,
       body: SafeArea(
-        minimum: const EdgeInsets.only(left: 15, right: 15),
+        minimum: const EdgeInsets.only(left: 15, right: 15, top: 40),
         child: CustomScrollView(
           slivers: <Widget>[
             SliverList(
