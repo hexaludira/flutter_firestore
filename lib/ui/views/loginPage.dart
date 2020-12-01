@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firestore/ui/views/registerPage.dart';
 
 class LoginPage extends StatelessWidget {
   TextEditingController _emailController = TextEditingController();
@@ -208,7 +209,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        //Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
                       },
                       child: Text(
                         'Register here',

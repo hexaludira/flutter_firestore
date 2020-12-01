@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firestore/core/services/auth_service.dart';
 import 'package:flutter_firestore/ui/views/loginPage.dart';
+import 'package:flutter_firestore/ui/views/profilePage.dart';
 //import 'package:flutter_firestore/ui/views/profilePage.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFF5cc3fd),
+        color: Colors.blueAccent,
         child: SafeArea(
           child: Container(
             margin: EdgeInsets.only(left: 16, right: 16, top: 40),
@@ -86,25 +87,25 @@ class _RegisterPageState extends State<RegisterPage> {
                               fillColor: Colors.white,
                               filled: true,
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(30),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
                               ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
                               errorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
