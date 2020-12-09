@@ -1,0 +1,208 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_firestore/ui/views/loginPage.dart';
+import 'package:flutter_firestore/core/services/auth_service.dart';
+
+class ProfilePage extends StatelessWidget {
+  final FirebaseUser user;
+
+  ProfilePage({this.user});
+
+  final TextEditingController _uidController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    _uidController.text = user.uid;
+    _nameController.text = user.displayName ?? '-'; //find the meaning
+    _emailController.text = user.email;
+    _phoneController.text = user.phoneNumber ?? '-';
+
+    return Scaffold(
+      body: Container(
+        color: Color(0xFF219ebc),
+        child: SafeArea(
+          child: Container(
+            margin: EdgeInsets.only(right: 16, left: 16, top: 40),
+            child: CustomScrollView(
+              slivers: <Widget>[
+                SliverList(
+                  delegate: SliverChildListDelegate([
+
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'Hello',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 48,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1.5,
+                          ),
+                        ),
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: Divider(
+                            thickness: 3,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width:40),
+                      ],
+                    ),
+
+                    Text(
+                      'Profile',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 36,
+                        letterSpacing: 5,
+                      ),
+                    ),
+
+                    SizedBox(height: 40,),
+
+                    Text(
+                      'UID',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+
+                    SizedBox(height: 8),
+
+                    TextFormField(
+                      controller: _uidController,
+                      readOnly: true,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: 'UID',
+                        fillColor: Colors.white,
+                        filled: true,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ), 
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                      ),
+                    ),
+
+                    SizedBox(height: 16),
+
+                    Text(
+                      'Display Name',
+                      style: TextStyle(color: Colors.white),
+                    ),
+
+                    SizedBox(height: 8),
+
+                    TextFormField(
+                      controller: _nameController,
+                      readOnly: true,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: 'Display Name',
+                        fillColor: Colors.white,
+                        filled: true,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                      ),
+                    ),
+
+                    SizedBox(height: 16),
+
+                    Text(
+                      'Phone Number',
+                      style: TextStyle(color: Colors.white),
+                    ),
+
+                    SizedBox(height: 8),
+
+                    TextFormField(
+                      controller: _phoneController,
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        hintText: 'Phone Number',
+                        fillColor: Colors.white,
+                        filled: true,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                      ),
+                    ),
+
+                    SizedBox(height: 20),
+                  ]),
+                ),
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: Container(
+                      width: double.infinity,
+                      child: RaisedButton(
+                        onPressed: () async {
+                          AuthService.signOut();
+
+                          //ke halaman login
+                          Navigator.pushAndRemoveUntil(
+                            context, 
+                            MaterialPageRoute(builder: (context) => LoginPage()), 
+                            (route) => false
+                          );
+                        },
+                        child: Text(
+                          'Log Out',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        color: Color(0xFF4f4f4f),
+                        elevation: 0,
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
