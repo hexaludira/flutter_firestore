@@ -134,6 +134,36 @@ class ProfilePage extends StatelessWidget {
                     SizedBox(height: 16),
 
                     Text(
+                      'Email',
+                      style: TextStyle(color: Colors.white),
+                    ),
+
+                    SizedBox(height: 8),
+
+                    TextFormField(
+                      controller: _emailController,
+                      readOnly: true,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                            color: Colors.white,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                      ),
+                    ),
+
+                    SizedBox(height: 16),
+
+                    Text(
                       'Phone Number',
                       style: TextStyle(color: Colors.white),
                     ),

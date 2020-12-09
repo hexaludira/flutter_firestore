@@ -134,25 +134,25 @@ class _RegisterPageState extends State<RegisterPage> {
                               fillColor: Colors.white,
                               filled: true,
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ), 
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
                               ),
-                              errorBorder: OutlineInputBorder(
+                              focusedErrorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
@@ -184,25 +184,25 @@ class _RegisterPageState extends State<RegisterPage> {
                               fillColor: Colors.white,
                               filled: true,
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
                               ),
-                              errorBorder: OutlineInputBorder(
+                              focusedErrorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
                                   color: Colors.white,
                                 ),
