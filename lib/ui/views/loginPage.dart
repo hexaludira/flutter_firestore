@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firestore/core/services/auth_service.dart';
+import 'package:flutter_firestore/ui/views/homeView.dart';
+import 'package:flutter_firestore/ui/views/profilePage.dart';
 import 'package:flutter_firestore/ui/views/registerPage.dart';
 
 class LoginPage extends StatelessWidget {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +59,8 @@ class LoginPage extends StatelessWidget {
 
                 //Form username & password
                 Form(
+                  key: _formKey,
                   child: Column(
-                  
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
@@ -63,8 +68,8 @@ class LoginPage extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                       SizedBox(height: 8),
+
                       TextFormField(
-                        
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -118,7 +123,38 @@ class LoginPage extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         child: RaisedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              SignInSignUpResult result = await AuthService.signInWithEmail(
+                                email: _emailController.text, pass: _passController.text
+                              );
+
+                              if (result.user != null) {
+                                //go to profile page
+                                Navigator.push(
+                                  context, 
+                                  //MaterialPageRoute(builder: (context) => ProfilePage(user: result.user,))
+                                  MaterialPageRoute(builder: (context) => HomeView())
+                                );
+                              } else {
+                                //show dialog
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                                          title: Text('Error'),
+                                                          content: Text(result.message),
+                                                          actions: <Widget>[
+                                                            FlatButton(onPressed: () {
+                                                              Navigator.pop(context);
+                                                            }, 
+                                                            child: Text('OK'),
+                                                            ),
+                                                          ],
+                                                        )
+                                );
+                              }
+                            }
+                          },
                           child: Text(
                             'Login',
                             style: TextStyle(color: Colors.white),
