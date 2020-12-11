@@ -13,14 +13,31 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login Test',
-      theme: ThemeData(
-        primarySwatch: Colors.blue
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(builder: (_) => locator<CRUDModel>()),
+      ],
+      child: MaterialApp(
+        title: 'Login Firestore',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        onGenerateRoute: Router.generateRoute,
       ),
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
     );
+
+
+    /** Versi 2 */
+    // return MaterialApp(
+    //   title: 'Login Test',
+    //   theme: ThemeData(
+    //     primarySwatch: Colors.blue
+    //   ),
+    //   debugShowCheckedModeBanner: false,
+    //   home: LoginPage(),
+    // );
+
+    /** use provider */
     // return MultiProvider(
     //   providers: [
     //     ChangeNotifierProvider(builder: (_) => locator<CRUDModel>()),

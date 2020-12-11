@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_firestore/ui/views/loginPage.dart';
 import './views/addProduct.dart';
 import './views/productDetails.dart';
 import './views/homeView.dart';
@@ -8,6 +9,8 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/' :
+        return MaterialPageRoute(builder: (_) => LoginPage());
+      case '/homeView' :
         return MaterialPageRoute(builder: (_) => HomeView());
       case '/addProduct' :
         return MaterialPageRoute(builder: (_) => AddProduct());
